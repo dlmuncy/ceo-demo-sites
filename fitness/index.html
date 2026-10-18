@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Performance Fitness - Train Like an Athlete</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a1128;
+            --secondary-color: #00bcd4;
+            --accent-color: #ffeb3b;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.7;
+            color: var(--gray-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bebas Neue', cursive;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+        }
+        
+        h2 {
+            font-size: 3rem;
+        }
+        
+        h3 {
+            font-size: 2.2rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #0097a7;
+            text-decoration: underline;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(10, 17, 40, 0.9) 0%, rgba(0, 188, 212, 0.8) 100%),
+                      url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwc3R1ZGlvfDF8fHx8fHx8MTYzMzI5MDcwMA&ixlib=rb-1.2.1&q=80&w=1080') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0097a7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        /* Services Grid (Classes) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        /* Facilities Section */
+        .facilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .facility-item {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+        
+        .facility-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .facility-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Reviews Section */
+        .reviews-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .review-card {
+            min-width: 300px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            scroll-snap-align: start;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .review-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .review-rating {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-text {
+            color: var(--gray-color);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        /* Map Section */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 500px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0097a7;
+            transform: translateY(-2px);
+        }
+        
+        /* CTA Band */
+        .cta-band {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #0097a7 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-band::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .cta-band h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-band p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        
+        .cta-band .btn {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                translateY(0);
+            }
+        }
+        
+        /* Scroll Animation */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        [data-animate].animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+                min-height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid,
+            .facilities {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-band h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" data-animate>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Peak Performance Fitness</h1>
+                <p>State-of-the-art fitness studio offering personal training, group classes, and specialized programs to help you reach your peak performance.</p>
+                <div class="hero-buttons">
+                    <a href="https://buy.stripe.com/9B67sMb6g4rn6lZdAxcjS1a" class="btn btn-primary">Get a Site Like This</a>
+                    <a href="#contact" class="btn btn-secondary">Start Your Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="services" id="classes" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Training Programs</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate>
+                    <div class="service-icon">💪</div>
+                    <h3>Personal Training</h3>
+                    <p>One-on-one coaching with certified trainers. Customized workout plans, nutrition guidance, and progress tracking.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🧘‍♀️</div>
+                    <h3>Group Fitness Classes</h3>
+                    <p>Energetic group sessions including HIIT, yoga, spin, and strength training. All levels welcome.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">⚡</div>
+                    <h3>Athletic Performance</h3>
+                    <p>Specialized programs for athletes looking to improve speed, agility, power, and sport-specific skills.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🏋️‍♂️</div>
+                    <h3>Strength & Conditioning</h3>
+                    <p>Powerlifting, bodybuilding, and functional training programs to build muscle and increase strength.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities" id="facilities" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+            </div>
+            <div class="facilities">
+                <div class="facility-item" data-animate>
+                    <div class="facility-icon">🏗️</div>
+                    <h3>Modern Equipment</h3>
+                    <p>Latest cardio and strength equipment from top brands. Regularly maintained and sanitized.</p>
+                </div>
+                <div class="facility-item" data-animate>
+                    <div class="facility-icon">🧖‍♂️</div>
+                    <h3>Locker Rooms</h3>
+                    <p>Spacious locker rooms with premium amenities, showers, and towel service.</p>
+                </div>
+                <div class="facility-item" data-animate>
+                    <div class="facility-icon">🥗</div>
+                    <h3>Nutrition Bar</h3>
+                    <p>Healthy smoothies, protein shakes, and snacks to fuel your workout and recovery.</p>
+                </div>
+                <div class="facility-item" data-animate>
+                    <div class="facility-icon">🧘‍♀️</div>
+                    <h3>Studio Space</h3>
+                    <p>Dedicated studio for yoga, pilates, and dance classes with premium sound systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Member Success Stories</h2>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">M</div>
+                        <div class="review-info">
+                            <h3>Mike T.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Lost 30 pounds and gained confidence. The trainers really push you to be your best while making it fun."</p>
+                </div>
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">S</div>
+                        <div class="review-info">
+                            <h3>Sarah L.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The group classes are amazing! Never bored and always challenged. Best decision I've made for my health."</p>
+                </div>
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">J</div>
+                        <div class="review-info">
+                            <h3>James K.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"As a competitive athlete, the performance training has taken my game to the next level. Worth every penny."</p>
+                </div}
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map" id="map" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.5!2d-74.006!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda3cf%3A0x8c1c2b9f6c9f0a3!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1600000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Started</h2>
+            </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/yourformid" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Fitness Goals</label>
+                        <select id="goals" name="goals">
+                            <option value="">Select your goal</option>
+                            <option value="weight_loss">Weight Loss</option>
+                            <option value="muscle_gain">Muscle Gain</option>
+                            <option value="strength">Strength Building</option>
+                            <option value="endurance">Endurance Training</option>
+                            <option value="athletic">Athletic Performance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Any questions or concerns?" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </form>
+                <div class="contact-info" style="margin-top: 2rem; text-align: center;">
+                    <p>Phone: <a href="tel:+15551234567">(555) 123-4567</a></p>
+                    <p>Email: <a href="mailto:info@peakperformancefit.com">info@peakperformancefit.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band" data-animate>
+        <div class="container">
+            <h2>Ready to Transform Your Fitness?</h2>
+            <p>Get a professional fitness website like this for just $299 setup plus $19/month hosting. Includes class scheduling, member management, and workout tracking.</p>
+            <a href="https://buy.stripe.com/9B67sMb6g4rn6lZdAxcjS1a" class="btn btn-primary">Get Your Site</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Peak Performance Fitness. All rights reserved.</p>
+            <p>
+                Photo by <a href="https://unsplash.com/@victorfreitas" target="_blank">Victor Freitas</a> on Unsplash
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

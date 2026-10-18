@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bella Trattoria - Authentic Italian Dining</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8b0000;
+            --secondary-color: #d4af37;
+            --accent-color: #f5deb3;
+            --light-color: #fafafa;
+            --dark-color: #212121;
+            --gray-color: #6c757d;
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
+            color: var(--gray-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+        }
+        
+        h3 {
+            font-size: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #b8860b;
+            text-decoration: underline;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.8) 0%, rgba(212, 175, 55, 0.7) 100%),
+                      url('https://images.unsplash.com/photo-1517248135467-4c7edb34c457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW58MXx8fHx8fDE2MzMyOTA2NjQ&ixlib=rb-1.2.1&q=80&w=1080') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b8860b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        /* Services Grid (Menu) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Reviews Section */
+        .reviews-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .review-card {
+            min-width: 300px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            scroll-snap-align: start;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .review-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .review-rating {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-text {
+            color: var(--gray-color);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        /* Map Section */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 500px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #b8860b;
+            transform: translateY(-2px);
+        }
+        
+        /* CTA Band */
+        .cta-band {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #b8860b 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-band::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .cta-band h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-band p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        
+        .cta-band .btn {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Scroll Animation */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        [data-animate].animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+                min-height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-band h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" data-animate>
+        <div class="container">
+            <div class="hero-content">
+                <h1>La Bella Trattoria</h1>
+                <p>Authentic Italian cuisine in a warm, family-friendly atmosphere. Made with fresh, locally-sourced ingredients and traditional recipes.</p>
+                <div class="hero-buttons">
+                    <a href="https://buy.stripe.com/9B67sMb6g4rn6lZdAxcjS1a" class="btn btn-primary">Get a Site Like This</a>
+                    <a href="#contact" class="btn btn-secondary">Make a Reservation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="services" id="menu" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🍝</div>
+                    <h3>Homemade Pasta</h3>
+                    <p>Fresh pasta made daily with traditional recipes. Try our signature tagliatelle al tartufo or classic spaghetti carbonara.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🍕</div>
+                    <h3>Wood-Fired Pizza</h3>
+                    <p>Authentic Neapolitan-style pizza cooked in our wood-fired oven. Margherita, Diavola, and seasonal specials.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🥩</div>
+                    <h3>Prime Cuts</h3>
+                    <p>Finest quality beef, pork, and lamb prepared to perfection. Florentine steak, ossobuco, and homemade sausages.</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">🍷</div>
+                    <h3>Fine Wines</h3>
+                    <p>Extensive Italian wine list featuring regional varieties from Tuscany, Piedmont, and Veneto. Expert pairing recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Restaurant</h2>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edb34c457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW58MXx8fHx8fDE2MzMyOTA2NjQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Dining room">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxwaG90ZWwlMjBkaXNofDF8fHx8fHx8MTYzMzI5MDY3MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Pasta dish">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-5cf86577a5e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxwaG90ZWwlMjBkaXNofDJ8fHx8fHx8MTYzMzI5MDY4MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Pizza">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541339907596-23e6151501e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxwaG90ZWwlMjBkaXNofDN8fHx8fHx8MTYzMzI5MDY5MQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Wine">
+                </div>
+            </div>
+            <p style="text-align: center; font-style: italic; margin-top: 1.5rem; color: var(--gray-color);">
+                Photos by various photographers on Unsplash
+            </p>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Guests Say</h2>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">M</div>
+                        <div class="review-info">
+                            <h3>Maria S.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The best Italian food I've had outside of Italy. The pasta is incredible and the tiramisu is to die for."</p>
+                </div>
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">J</div>
+                        <div class="review-info">
+                            <h3>John D.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Perfect for date night. Cozy atmosphere, excellent service, and the wine selection is impressive."</p>
+                </div>
+                <div class="review-card" data-animate>
+                    <div class="review-header">
+                        <div class="review-avatar">L</div>
+                        <div class="review-info">
+                            <h3>Lisa M.</h3>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Family-friendly and accommodating. Kids loved the spaghetti and meatballs, and we enjoyed the peaceful evening."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map" id="map" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.5!2d-74.006!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda3cf%3A0x8c1c2b9f6c9f0a3!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1600000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact" data-animate>
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact & Reservations</h2>
+            </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/yourformid" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Special Requests</label>
+                        <textarea id="message" name="message" placeholder="Dietary restrictions, occasion, etc." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Reservation Request</button>
+                </form>
+                <div class="contact-info" style="margin-top: 2rem; text-align: center;">
+                    <p>Phone: <a href="tel:+15551234567">(555) 123-4567</a></p>
+                    <p>Email: <a href="mailto:info@labellatrattoria.com">info@labellatrattoria.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band" data-animate>
+        <div class="container">
+            <h2>Want a Website That Makes People Hungry?</h2>
+            <p>Get a beautiful restaurant website like this for just $299 setup plus $19/month hosting. Includes menu management, reservation system, and mouth-watering galleries.</p>
+            <a href="https://buy.stripe.com/9B67sMb6g4rn6lZdAxcjS1a" class="btn btn-primary">Get Your Site</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 La Bella Trattoria. All rights reserved.</p>
+            <p>
+                Photo by <a href="https://unsplash.com/@toaheftiba" target="_blank">Toa Heftiba</a> on Unsplash
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

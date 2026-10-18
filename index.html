@@ -3,28 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Demo Sites</title>
+    <title>CEO Demo Sites - Premium Business Templates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin:40px; background:#f5f5f5; }
-        .container { max-width:800px; margin:auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-        h1 { text-align:center; color:#2c3e50; }
-        .links { margin-top:30px; }
-        .links a { display:block; width:100%; max-width:400px; margin:15px auto; padding:15px; background:#e74c3c; color:#fff; text-align:center; text-decoration:none; border-radius:5px; font-weight:bold; }
-        .links a:hover { background:#c0392b; }
-        .description { margin-top:20px; line-height:1.6; color:#555; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--gray-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #c0392b;
+            text-decoration: underline;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        
+        /* Demos Grid */
+        .demos-section {
+            padding: 4rem 0;
+        }
+        
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .demo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .demo-content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            flex-grow: 1;
+        }
+        
+        .demo-content p {
+            font-size: 0.95rem;
+            color: var(--gray-color);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .demo-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .demo-link:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--light-color);
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .demos-section {
+                padding: 2rem 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Demo Sites for Local Businesses</h1>
-        <div class="description">
-            Choose a niche to see a polished, mobile-friendly one-page website template.
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>CEO Demo Sites</h1>
+            <p>Premium website templates for local businesses - each designed to convert visitors into customers</p>
         </div>
-        <div class="links">
-            <a href="barber/" target="_blank">Barber Shop Demo</a>
-            <a href="plumber/" target="_blank">Plumber Demo</a>
-            <a href="template/" target="_blank">Template Demo (Customizable)</a>
+    </header>
+
+    <!-- Demos Section -->
+    <section class="demos-section">
+        <div class="container">
+            <div class="demos-grid">
+                <!-- Barber Demo -->
+                <a href="barber/" class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1556740748-533b6552a2ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBzaG9wc3wxOXx8fHx8fHx8MTYzMzI5MDYxMg&ixlib=rb-1.2.1&q=80&w=1080" alt="Barber shop interior">
+                    <div class="demo-content">
+                        <h3>Barber Shop</h3>
+                        <p>Premium template for barbershops and grooming salons. Features service menus, online booking, and gallery showcasing your work.</p>
+                        <div class="demo-link">View Demo</div>
+                    </div>
+                </a>
+                
+                <!-- Plumber Demo -->
+                <a href="plumber/" class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1580913543789-10b82eb67e0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxwbHVtYmVyfDF8fHx8fHx8MTYzMzI5MDY0Mg&ixlib=rb-1.2.1&q=80&w=1080" alt="Plumber at work">
+                    <div class="demo-content">
+                        <h3>Plumbing Service</h3>
+                        <p>Emergency plumbing website with 24/7 service highlights, customer testimonials, and easy contact options for urgent repairs.</p>
+                        <div class="demo-link">View Demo</div>
+                    </div>
+                </a>
+                
+                <!-- Template Demo -->
+                <a href="template/" class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxidXNpbmVzc3xlbnwwfHx8fDE2MzMyOTA2NTQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Modern business">
+                    <div class="demo-content">
+                        <h3>Business Template</h3>
+                        <p>Versatile modern template suitable for any professional service. Clean, fast, and easy to customize for your brand.</p>
+                        <div class="demo-link">View Demo</div>
+                    </div>
+                </a>
+                
+                <!-- Restaurant Demo -->
+                <a href="restaurant/" class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edb34c457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW58MXx8fHx8fDE2MzMyOTA2NjQ&ixlib=rb-1.2.1&q=80&w=1080" alt="Restaurant interior">
+                    <div class="demo-content">
+                        <h3>Restaurant</h3>
+                        <p>Elegant restaurant template with menu display, reservation system, and gallery to showcase your cuisine and ambiance.</p>
+                        <div class="demo-link">View Demo</div>
+                    </div>
+                </a>
+                
+                <!-- Fitness Demo -->
+                <a href="fitness/" class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwc3R1ZGlvfDF8fHx8fHx8MTYzMzI5MDcwMA&ixlib=rb-1.2.1&q=80&w=1080" alt="Fitness studio">
+                    <div class="demo-content">
+                        <h3>Fitness Studio</h3>
+                        <p>Energetic fitness website for gyms and personal trainers. Features class schedules, trainer profiles, and membership options.</p>
+                        <div class="demo-link">View Demo</div>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>All demo sites use free tools and follow premium design principles. Images sourced from Unsplash with photographer credits in each demo.</p>
+            <p>&copy; 2026 CEO Demo Sites. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
