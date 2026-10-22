@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Family Dental - Comprehensive Dental Care</title>
+    <meta name="description" content="Professional dental care for the whole family. General, cosmetic, and emergency dentistry. Modern technology, gentle approach.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d3b4c;
+            --secondary-color: #00b4d8;
+            --accent-color: #f4a261;
+            --light-color: #f8f9fa;
+            --dark-color: #0f172a;
+            --gray-color: #64748b;
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #0077b6;
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Hero Section with autoplaying looped motion */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background-color: var(--primary-color);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(13, 59, 76, 0.9) 0%, rgba(0, 180, 216, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1588776814546-ec2cf1e2c7e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxkZW50YWwlMjBvZmZpY2V8MXx8fHx8fDE2MzMyOTA3MjA&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-conic-gradient(
+                    from 0deg,
+                    var(--secondary-color) 0deg 10deg,
+                    transparent 10deg 360deg
+                );
+            animation: rotate 20s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Motion elements - autoplaying looped, no Play buttons */
+        .motion-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .motion-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-color);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+        
+        /* Request an Appointment Form */
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .appointment-form h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2364748b' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            background: #0077b6;
+        }
+        
+        /* Click-to-call button */
+        .cta-bar {
+            background: var(--primary-color);
+            padding: 1.5rem 0;
+            margin: 3rem 0;
+        }
+        
+        .cta-bar .phone-number {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .cta-bar .phone-number a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .cta-bar .phone-number a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile-first responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .appointment-form {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .appointment-form h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Focus visible */
+        *:focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Family Dental</h1>
+            <p>Comprehensive dental care for the whole family. Modern technology, gentle approach, and a team that truly cares about your smile.</p>
+            
+            <!-- Motion background circles - autoplaying looped, no Play buttons -->
+            <div class="motion-bg">
+                <div class="motion-circle circle-1"></div>
+                <div class="motion-circle circle-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Complete dental care for every stage of life</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>General Dentistry</h3>
+                    <p>Cleanings, exams, fillings, and preventive care to keep your smile healthy for years to come.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Teeth whitening, veneers, bonding, and smile makeovers to help you feel confident in your smile.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Care</h3>
+                    <p>Same-day appointments for toothaches, broken teeth, and dental emergencies. We're here when you need us.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Dentistry</h3>
+                    <p>Gentle, patient-centered care for children, teens, adults, and seniors all under one roof.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Restorative Care</h3>
+                    <p>Crowns, bridges, implants, and dentures to restore function and beauty to damaged smiles.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Preventive Care</h3>
+                    <p>Sealants, fluoride treatments, night guards, and personalized hygiene plans for lasting oral health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request an Appointment Form -->
+    <section class="appointment-form">
+        <div class="container">
+            <h3>Request an Appointment</h3>
+            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--gray-color);">Schedule your visit online. We'll confirm your appointment within 24 hours.</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="general-dentistry">General Dentistry</option>
+                        <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
+                        <option value="emergency-care">Emergency Care</option>
+                        <option value="family-dentistry">Family Dentistry</option>
+                        <option value="restorative-care">Restorative Care</option>
+                        <option value="preventive-care">Preventive Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="preferred-date">Preferred Date</label>
+                    <input type="date" id="preferred-date" name="preferred-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Notes / Concerns</label>
+                    <textarea id="message" name="message" placeholder="Any specific concerns or preferred time of day..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Request Appointment</button>
+                <p class="form-note" style="margin-top: 1rem; font-size: 0.85rem; color: var(--gray-color); text-align: center;">By submitting, you agree to be contacted by Your Family Dental. No spam, ever.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Bar with click-to-call -->
+    <section class="cta-bar">
+        <div class="container">
+            <div class="cta-content">
+                <p class="phone-number">
+                    <a href="tel:+18005553368">(800) 555-DENT</a>
+                    • Emergency Appointments Available
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Your Family Dental</h3>
+                    <p>Compassionate Care • Modern Technology</p>
+                </div>
+                <div class="footer-links">
+                    <nav>
+                        <ul>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#appointment">Request Appointment</a></li>
+                            <li><a href="#about">About Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Your Family Dental. All rights reserved.</p>
+                    <p>Photo by <a href="https://unsplash.com/@samsmorrison" target="_blank" rel="noopener">Sam Morrison</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Design inspired by premium local business templates.</p>
+                    <p class="demo-line">Demo site by <a href="mailto:info@502ai.pro">502ai - info@502ai.pro</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission - mock, no real submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sent!';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    form.reset();
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set minimum date to today for appointment
+        const dateInput = document.getElementById('preferred-date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        }
+    </script>
+</body>
+</html>
