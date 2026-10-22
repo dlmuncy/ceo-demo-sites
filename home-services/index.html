@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Plumbing Co - Professional Plumbing & HVAC Services</title>
+    <meta name="description" content="Professional plumbing and HVAC services for homeowners. Licensed, insured, and available 24/7.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #ff6b35;
+            --accent-color: #fbbf24;
+            --light-color: #f8f9fa;
+            --dark-color: #0f172a;
+            --gray-color: #64748b;
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #dc2626;
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Hero Section with autoplaying looped motion */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background-color: var(--primary-color);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(255, 107, 53, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1580913543789-10b82eb67e0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNzY1NDZ8MHwxfHNlYXJjaHwxfHxwbHVtYmVyfDF8fHx8fHx8MTYzMzI5MDY0Mg&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-conic-gradient(
+                    from 0deg,
+                    var(--secondary-color) 0deg 10deg,
+                    transparent 10deg 360deg
+                );
+            animation: rotate 20s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Motion elements - autoplaying looped, no Play buttons */
+        .motion-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .motion-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-color);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+        
+        /* Request a Quote Form */
+        .quote-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .quote-form h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2364748b' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            background: #dc2626;
+        }
+        
+        /* Click-to-call button */
+        .cta-bar {
+            background: var(--primary-color);
+            padding: 1.5rem 0;
+            margin: 3rem 0;
+        }
+        
+        .cta-bar .phone-number {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .cta-bar .phone-number a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .cta-bar .phone-number a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile-first responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .quote-form {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .quote-form h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Focus visible */
+        *:focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Plumbing Co</h1>
+            <p>Licensed plumbing and HVAC specialists serving homeowners throughout the region. Family-owned since 2010. Fast, reliable, and affordable service you can trust.</p>
+            
+            <!-- Motion background circles -->
+            <div class="motion-bg">
+                <div class="motion-circle circle-1"></div>
+                <div class="motion-circle circle-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive plumbing and HVAC solutions for every home need</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚿</div>
+                    <h3>Emergency Plumbing</h3>
+                    <p>24/7 rapid response for burst pipes, severe leaks, and plumbing emergencies. We're here when you need us most.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>HVAC Services</h3>
+                    <p>Heating, ventilation, and air conditioning installation, repair, and maintenance. Keep your home comfortable year-round.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Drain Cleaning</h3>
+                    <p>Professional drain cleaning using advanced equipment to clear clogs and restore proper flow. No harsh chemicals needed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Water Heater Services</h3>
+                    <p>Installation, repair, and maintenance of tank and tankless water heaters. Energy-efficient options available.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Fixture Installation</h3>
+                    <p>Expert installation of faucets, sinks, toilets, showers, and other plumbing fixtures. Quality workmanship guaranteed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💧</div>
+                    <h3>Water Quality</h3>
+                    <p>Water testing, filtration system installation, and treatment solutions for cleaner, better-tasting water.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request a Quote Form -->
+    <section class="quote-form">
+        <div class="container">
+            <h3>Request a Quote</h3>
+            <p>Get a free, no-obligation estimate for your plumbing or HVAC project. We'll contact you within 24 hours.</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="emergency-plumbing">Emergency Plumbing</option>
+                        <option value="hvac-services">HVAC Services</option>
+                        <option value="drain-cleaning">Drain Cleaning</option>
+                        <option value="water-heater">Water Heater Service</option>
+                        <option value="fixture-installation">Fixture Installation</option>
+                        <option value="water-quality">Water Quality</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Describe your plumbing or HVAC need..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Request</button>
+                <p class="form-note">By submitting, you agree to be contacted by Your Plumbing Co. No spam, ever.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Bar with click-to-call -->
+    <section class="cta-bar">
+        <div class="container">
+            <div class="cta-content">
+                <p class="phone-number">
+                    <a href="tel:+18005557890">(800) 555-7890</a>
+                    • 24/7 Emergency Service Available
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Your Plumbing Co</h3>
+                    <p>Licensed & Insured • Since 2010</p>
+                </div>
+                <div class="footer-links">
+                    <nav>
+                        <ul>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#quote">Request Quote</a></li>
+                            <li><a href="#about">About Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Your Plumbing Co. All rights reserved.</p>
+                    <p>Images by <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Design inspired by premium local business templates.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission - mock, no real submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sent!';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    form.reset();
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
